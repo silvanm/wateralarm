@@ -1,0 +1,6 @@
+{
+	"name" : "AppBundle",
+	"dependencies" : {
+        "moment" : "latest"
+	}
+}

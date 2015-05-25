@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}Silvan's Wateralarm{% endblock %}</title>
+
+    {#  {% javascripts
+      "@jQuery_js" %}
+      <script src="{{ asset_url }}"></script>
+      {% endjavascripts %}
+      {% javascripts
+      "@bootstrap_js" %}
+      <script src="{{ asset_url }}"></script>
+      {% endjavascripts %}
+      {% stylesheets
+      "@bootstrap_css" %}
+      <link rel="stylesheet" href="{{ asset_url }}"/>
+      {% endstylesheets %}
+  #}
+
+    {% javascripts
+        "@moment_js" %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {% stylesheets 'bundles/app/css/*' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <link href='http://fonts.googleapis.com/css?family=Fredoka+One|Roboto+Slab' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+
+{% block body %}{% endblock %}
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+{% block javascripts %}
+    {% javascripts '@AppBundle/Resources/public/js/*' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+</body>
+</html>

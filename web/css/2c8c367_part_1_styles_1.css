@@ -1,0 +1,67 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto Slab', serif;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+body.ok {
+  background-color: #338a2e;
+  color: #82d47d;
+}
+body.warning {
+  background-color: #aa7a39;
+  color: #dec39e;
+}
+body.alarm {
+  background-color: #aa3939;
+  color: #de9e9e;
+}
+body.unknown {
+  background-color: black;
+  color: gray;
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+    top: 10px;
+  }
+  to {
+    opacity: 1;
+    top: 0px;
+  }
+}
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+    top: 10px;
+  }
+  to {
+    opacity: 1;
+    top: 0px;
+  }
+}
+#box {
+  border: 1px solid;
+  padding: 5rem;
+  position: relative;
+  -webkit-animation: fadein 2s;
+  /* Safari, Chrome and Opera > 12.1 */
+  animation: fadein 2s;
+}
+#box #status {
+  font-size: 10rem;
+  text-align: center;
+  font-family: 'Fredoka One';
+}
