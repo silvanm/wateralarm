@@ -1,3 +1,16 @@
+@green: #338A2E;
+@lightgreen: lighten(@green, 30%);
+
+@orange: #AA7A39;
+@lightorange: lighten(@orange, 30%);
+
+@red: #AA3939;
+@lightred: lighten(@red, 30%);
+
+html, body {
+  height: 100%;
+}
+
 body {
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -5,15 +18,68 @@ body {
   -ms-flex-align: center;
   -webkit-align-items: center;
   -webkit-box-align: center;
-
+  justify-content: center;
   align-items: center;
+  font-family: 'Roboto Slab', serif;
+
+  -webkit-transition: all .2s ease-in;
+  transition: all .2s ease-in;
+
+  &.ok {
+    background-color: @green;
+    color: @lightgreen;
+  }
+
+  &.warning {
+    background-color: @orange;
+    color: @lightorange;
+  }
+
+  &.alarm {
+    background-color: @red;
+    color: @lightred;
+  }
+
+  &.unknown {
+    background-color: black;
+    color: gray;
+  }
 }
 
-.Aligner-item {
-  max-width: 50%;
+@keyframes fadein {
+  from {
+    opacity: 0;
+    top: 10px
+  }
+  to {
+    opacity: 1;
+    top: 0px
+  }
 }
 
-html, body
-{
-    height: 100%;
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+    top: 10px
+  }
+  to {
+    opacity: 1;
+    top: 0px
+  }
+}
+
+#box {
+  border: 1px solid;
+  padding: 5rem;
+  position: relative;
+
+  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+  animation: fadein 2s;
+
+  #status {
+    font-size: 10rem;
+    text-align: center;
+    font-family: 'Fredoka One';
+  }
 }
