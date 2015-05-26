@@ -60,7 +60,7 @@ class DefaultController extends Controller {
 				'class'        => $class,
 				'lastUpdate'   => $status->getCreatedAt(),
 				'lastChange'   => $statuschange->getCreatedAt(),
-				'buzzerStatus' => $buzzerstatus
+				'buzzerStatus' => $buzzerstatus,
 			]
 
 		) );

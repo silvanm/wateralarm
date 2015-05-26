@@ -1,4 +1,4 @@
-String.prototype.capitalizeFirstLetter = function() {
+String.prototype.capitalizeFirstLetter = function () {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
@@ -10,9 +10,9 @@ jQuery(function ($) {
         20000
     );
 
-    var timestampUpdateInterval = window.setInterval( updateTimestamps, 1000);
+    var timestampUpdateInterval = window.setInterval(updateTimestamps, 1000);
 
-    window.setTimeout(update, 5000);
+    update();
 
     var lastUpdate = null;
     var lastChange = null;
@@ -24,13 +24,25 @@ jQuery(function ($) {
         )
 
         response.done(function (data) {
-            $('body').attr('class', data.class);
-            $('#status').text(data.text);
-            lastUpdate = moment(data.lastUpdate.date);
-            lastChange = moment(data.lastChange.date);
-            $('#buzzerStatus').text(data.buzzerStatus);
+            if ($('body').attr('class') != data.class) {
+                $('#box').fadeOut('2000', function () {
+                    $('#activity-indicator').hide();
+                    $('#overlay').css('opacity', 0);
+                    $('body').attr('class', data.class);
+                    $('#status').text(data.text);
+                    lastUpdate = moment(data.lastUpdate.date);
+                    lastChange = moment(data.lastChange.date);
+                    $('#buzzerStatus').text(data.buzzerStatus);
 
-            $('#status').css('font-size', parseInt(5 + 20 / data.text.length) + 'rem');
+                    // Make the text fit nicely
+                    if ($(window).width() > 480) {
+                        $('#status').css('font-size', parseInt(5 + 20 / data.text.length) + 'rem');
+                    }
+                    $(this).fadeIn();
+                })
+            }
+
+
         })
             .fail(function (data) {
                 $('body').attr('class', '???');
@@ -41,11 +53,11 @@ jQuery(function ($) {
 
     function updateTimestamps() {
         if (null !== lastUpdate) {
-            $('#lastChange').attr('title', lastChange.format('D.M.YYYY HH:mm:ss') );
+            $('#lastChange').attr('title', lastChange.format('D.M.YYYY HH:mm:ss'));
             $('#lastChange').text(lastChange.fromNow().capitalizeFirstLetter());
         }
         if (null !== lastChange) {
-            $('#lastUpdate').attr('title', lastUpdate.format('D.M.YYYY HH:mm:ss') );
+            $('#lastUpdate').attr('title', lastUpdate.format('D.M.YYYY HH:mm:ss'));
             $('#lastUpdate').text(lastUpdate.fromNow().capitalizeFirstLetter());
         }
     }
