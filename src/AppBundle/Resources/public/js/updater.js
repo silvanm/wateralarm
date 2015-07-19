@@ -24,13 +24,13 @@ jQuery(function ($) {
         )
 
         response.done(function (data) {
+            lastUpdate = moment(data.lastUpdate.date);
             if ($('body').attr('class') != data.class) {
                 $('#box').fadeOut('2000', function () {
                     $('#activity-indicator').hide();
                     $('#overlay').css('opacity', 0);
                     $('body').attr('class', data.class);
                     $('#status').text(data.text);
-                    lastUpdate = moment(data.lastUpdate.date);
                     lastChange = moment(data.lastChange.date);
                     $('#buzzerStatus').text(data.buzzerStatus);
 
