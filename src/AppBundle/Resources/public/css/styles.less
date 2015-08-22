@@ -28,16 +28,40 @@ body {
   &.ok {
     background-color: @green;
     color: @lightgreen;
+
+    a {
+      color: @lightgreen;
+    }
+
+    #updateStats span {
+      color: lighten(@lightgreen, 20%);
+    }
   }
 
   &.warning {
     background-color: @orange;
     color: @lightorange;
+
+    a {
+      color: @lightorange;
+    }
+
+    #updateStats span {
+      color: lighten(@lightorange, 20%);
+    }
   }
 
   &.alarm {
     background-color: @red;
     color: @lightred;
+
+    a {
+      color: @lightred;
+    }
+
+    #updateStats span {
+      color: lighten(@lightred, 20%);
+    }
   }
 
   &.unknown {
@@ -98,6 +122,7 @@ body {
   border: 1px solid;
   padding: 5rem;
   position: relative;
+  max-width: 20rem;
 
   @media (max-width: 500px) {
     border: none;
