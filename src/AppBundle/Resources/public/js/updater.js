@@ -28,7 +28,7 @@ jQuery(function ($) {
             if ($('body').attr('class') != data.class) {
                 $('#box').fadeOut('2000', function () {
                     $('#activity-indicator').hide();
-                    $('#overlay').css('opacity', 0);
+                    $('#overlay').fadeOut();
                     $('body').attr('class', data.class);
                     $('#status').text(data.text);
                     lastChange = moment(data.lastChange.date);
@@ -61,4 +61,19 @@ jQuery(function ($) {
             $('#lastUpdate').text(lastUpdate.fromNow().capitalizeFirstLetter());
         }
     }
+
+    $('#simulate span').click(function(e) {
+        $('#spinner').show();
+        if ($(this).attr('id') == 'ok') {
+            var waterlevel = 0
+        } else {
+            var waterlevel = 3
+        }
+        $.ajax({
+            url: 'post-status?waterlevel=' + waterlevel + '&muted=0',
+            success: function() {
+                $('#spinner').hide();
+            }
+        })
+    })
 })

@@ -51,7 +51,12 @@ class DefaultController extends Controller {
 				$text         = 'ALARM!';
 				$class        = 'alarm';
 				$buzzerstatus = $status->getAlarmMuted() ? 'muted' : 'signaling';
+		}
 
+		if ($statuschange->getCreatedAt()->diff(new \DateTime())->h > 0) {
+			$text = '???';
+			$class = '???';
+			$buzzerstatus = $status->getAlarmMuted() ? 'muted' : 'signaling';
 		}
 
 		$response = new Response( json_encode(
