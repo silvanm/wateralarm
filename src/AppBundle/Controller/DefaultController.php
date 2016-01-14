@@ -65,6 +65,7 @@ class DefaultController extends Controller
         $response = new Response(
             json_encode(
                 [
+                    'level'        => $status->getWaterlevel(),
                     'text'         => $text,
                     'class'        => $class,
                     'lastUpdate'   => $status->getCreatedAt(),
